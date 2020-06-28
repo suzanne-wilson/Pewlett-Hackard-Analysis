@@ -216,40 +216,12 @@ AND (e.hire_date BETWEEN '1985-01-01' AND '1988-12-31')
 AND (tt.to_date = '9999-01-01')
 ORDER BY tt.title 
 ;
-
-select count(*) 
-from silver_tsunami;
-
-SELECT
-  first_name,
-  last_name,
-  count(*)
-INTO twc 
-FROM silver_tsunami
-GROUP BY
-  first_name,
-  last_name
-HAVING count(*) > 1;
-
-select * from silver_tsunami
-;
-
-SELECT * FROM 
-  (SELECT *, count(*)
-  OVER
-    (PARTITION BY
-      first_name,
-      last_name
-    ) AS count
-  FROM silver_tsunami) twc
-  WHERE twc.count > 1;
-
 -- Partition the data to show only most recent title per employee
 SELECT emp_no,
- last_name,
- first_name,
- title,
- salary
+	 last_name,
+	 first_name,
+	 title,
+	 salary
 -- INTO silver_tsunami_by_title
 FROM
 	 (SELECT emp_no,
@@ -264,4 +236,19 @@ FROM
 ORDER BY title, last_name, first_name;
 
 -- select * from silver_tsunami_by_title;
+
+-- identify employees who are eligible to have a mentor;
+SELECT 	e.emp_no,
+		e.first_name,
+		e.last_name,
+		tt.title,
+		tt.from_date,
+		tt.to_date
+-- INTO eligible_mentees
+FROM employees as e
+LEFT JOIN titles as tt
+ON e.emp_no = tt.emp_no
+WHERE tt.to_date = ('9999-01-01')
+AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
+;
 
