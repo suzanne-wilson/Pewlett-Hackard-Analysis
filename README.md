@@ -4,11 +4,13 @@ Module 7
 Over the next several years, Pewlett-Hackard will have a cohort of experienced employees reach retirement.  This presents an opportunity for PH to transfer some of the collective wisdom from these soon-to-retire employees to mid-career employees through the impementation of a mentoring program.  The objective of this report is to describe the Silver Tsunami cohort to demonstrate the opportunity, identify employees in this cohort who could serve as mentors by department and job title, and employees who are potential mentees born in 1965.  
 ---
 There were four steps taken to meet these objectives:
-1) Create an SQL database containing the PH employee data, which has been stored in Excel files.  Schema for all tables are [here](/Data/pewlett-hackard-schema.txt), and the full entity relationship diagram of the new postgreSQL database, PH-EmployeeDB, is below: 
+1) Create an SQL database containing the PH employee data, which has been stored in Excel files.  
+    Schema for all tables are [here](/pewlett-hackard-schema.txt), and the full entity relationship diagram of the new postgreSQL database, PH-EmployeeDB, is below: 
 
 ![EmployeeDB.png.png](/EmployeeDB.png.png)
 ---
-2) Create a table containing one row for each retiring employee that contains the employee number, full name, current title and salary, and start date in current role.  A csv file of this table, [silver_tsunami_by_title](/Data/silver_tsunami_by_title.csv), is available.  The SQL query can be found below.
+2) Create a table containing one row for each retiring employee that contains the employee number, full name, current title and salary, and start date in current role.  
+    A csv file of this table, [silver_tsunami_by_title](/Data/silver_tsunami_by_title.csv), is available.  The SQL query can be found below.
 
                                     -- Identify data on the current job titles and salary of retiring employees  
                                     -- Partition the data to show only most recent title per employee
